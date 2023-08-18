@@ -1,0 +1,14 @@
+# Prerequisites
+*.launch
+*.ld
+.settings
+Binaries
+Includes
+Drivers
+Debug
+Middlewares
+*.s
+*.prefs
+*.xml
+
+
