@@ -10,5 +10,8 @@ Middlewares
 *.s
 *.prefs
 *.xml
+*.cproject
+*.mxproject
+*.project
 
 
