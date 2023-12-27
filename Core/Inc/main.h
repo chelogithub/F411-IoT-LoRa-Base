@@ -61,10 +61,19 @@ void Error_Handler(void);
 #define PCB_LED_GPIO_Port GPIOC
 #define KEY_BTN_Pin GPIO_PIN_0
 #define KEY_BTN_GPIO_Port GPIOA
+#define USART2_TX_LR_Pin GPIO_PIN_2
+#define USART2_TX_LR_GPIO_Port GPIOA
+#define USART2_RX_LR_Pin GPIO_PIN_3
+#define USART2_RX_LR_GPIO_Port GPIOA
 #define SPI1_NSS_Pin GPIO_PIN_4
 #define SPI1_NSS_GPIO_Port GPIOA
 #define WIFI_EN_Pin GPIO_PIN_8
 #define WIFI_EN_GPIO_Port GPIOA
+#define USART1_TX_WF_Pin GPIO_PIN_9
+#define USART1_TX_WF_GPIO_Port GPIOA
+#define USART1_RX_WF_Pin GPIO_PIN_10
+#define USART1_RX_WF_GPIO_Port GPIOA
+
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

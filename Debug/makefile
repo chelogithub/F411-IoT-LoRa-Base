@@ -1,6 +1,6 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
-# Toolchain: GNU Tools for STM32 (10.3-2021.10)
+# Toolchain: GNU Tools for STM32 (11.3.rel1)
 ################################################################################
 
 -include ../makefile.init
@@ -9,6 +9,12 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include STRING/subdir.mk
+-include STM32_ETH_W5100/subdir.mk
+-include ModBUS/subdir.mk
+-include LoRa/subdir.mk
+-include HTTP/subdir.mk
+-include ESP8266/subdir.mk
 -include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
@@ -60,8 +66,8 @@ all: main-build
 main-build: F411-IoT-LoRa-Base.elf secondary-outputs
 
 # Tool invocations
-F411-IoT-LoRa-Base.elf F411-IoT-LoRa-Base.map: $(OBJS) $(USER_OBJS) C:\Marcelo\STM32_Workspaces\F411-IoT-LoRa-Base\STM32F411CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "F411-IoT-LoRa-Base.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Marcelo\STM32_Workspaces\F411-IoT-LoRa-Base\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F411-IoT-LoRa-Base.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+F411-IoT-LoRa-Base.elf F411-IoT-LoRa-Base.map: $(OBJS) $(USER_OBJS) C:\STM32-IDE\F411-IoT-LoRa-Base\STM32F411CEUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "F411-IoT-LoRa-Base.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\STM32-IDE\F411-IoT-LoRa-Base\STM32F411CEUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F411-IoT-LoRa-Base.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
