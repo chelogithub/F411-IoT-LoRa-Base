@@ -71,7 +71,7 @@ struct MBUS mb_wf;		// Instancia Wi-Fi
 
 char post[512];
 char body[512];
-char ENDPOINT[]="/tepelco",
+char ENDPOINT[]="/logdata",//ENDPOINT[]="/tepelco",
      SERVER_IP[]="192.168.0.91",
      PORT[]="8000";
 
@@ -451,7 +451,13 @@ int main(void)
 	  								ModBUS_F03_Read(&mb_eth,6),
 	  								ModBUS_F03_Read(&mb_eth,7),
 	  								ModBUS_F03_Read(&mb_eth,8),
-									ModBUS_F03_Read(&mb_eth,9),TEST_1,//ModBUS_F03_Read(&mb_eth,9),TEPELCO,
+									ModBUS_F03_Read(&mb_eth,9),
+									ModBUS_F03_Read(&mb_eth,10),
+									ModBUS_F03_Read(&mb_eth,11),
+									ModBUS_F03_Read(&mb_eth,12),
+									ModBUS_F03_Read(&mb_eth,13),
+									ModBUS_F03_Read(&mb_eth,14),
+									ModBUS_F03_Read(&mb_eth,15),TEST_1,//ModBUS_F03_Read(&mb_eth,9),TEPELCO,
 	  								post, body, 512))
 
 	  				{
@@ -528,16 +534,37 @@ int main(void)
 	  				{
 	  					CopiaVector(lr.dataRCV_hld,lr.dataRCV,lr._n_dataRCV,1,"D");
 
-	  					int i=0;
+	  					/*int i=0;
 	  					char num[6];
 	  					while(lr.dataRCV_hld[i] != ';')
 	  					{
 	  						num[i]=lr.dataRCV_hld[i];
 	  						i++;
 	  					}
-	  					num[i]='\0';
 	  					ModBUS_F03_Assign(&mb_eth,0,atoi(num,10));
+						*/
 
+	  					char num[6];
+	  					int i=0;
+	  					int n=0;
+	  					int lnn=0;
+	  					lnn=strlen(lr.dataRCV_hld);
+	  					while(i < lnn-1)
+	  					{
+							if( i!=0) i++;
+							int j=0;
+								while(lr.dataRCV_hld[i] != ';')
+								{
+									num[j]=lr.dataRCV_hld[i];
+									j++;
+									i++;
+								}
+							num[j]='\0';
+							ModBUS_F03_Assign(&mb_eth,n,atoi(num,10));
+							n++;												//Incremento posición  a almacenar
+	  					}
+
+	  					/*
 	  					i++;
 	  					int j=0;
 	  					while(lr.dataRCV_hld[i] != ';')
@@ -636,6 +663,7 @@ int main(void)
 	  					}
 	  					num[j]='\0';
 	  					ModBUS_F03_Assign(&mb_eth,9,atoi(num,10));
+	  					*/
 
 
 	  				}
