@@ -313,6 +313,7 @@ int main(void)
 		wf._n_D2SND=12;
 		wf._estado_conexion=100;//Si no se define no arranca	//wf._estado_conexion=1;					//Arranco en WiFi Desconectado
 		wf._automatizacion=WF_CONNECT_TCP;//wf._automatizacion=WF_SEND;
+		wf._NO_IP=1;
 		wf._DBG_EN=1;
 		//wf._send_data=1;
 		// ----------- INICIO - Seteo de mÃ³dulo Ethernet W5100 ----------- //
@@ -1588,7 +1589,7 @@ uint8_t ESP8266_HW_Init(UART_HandleTypeDef *SerialPort) //Devuelve 1 si reiniciÃ
 		  wf._n_fcomp=strlen("ready");
 		  wf._n_orig=UART_RX_items;
 
-		  while(FT_String_ND(UART_RX_vect_hld,&wf._n_orig,"ready",&wf._n_fcomp,wf._uartRCVD_tok,&wf._n_tok,&ntestc,&wf._id_conn,FIND)!=1)
+		  while(FT_String_ND(UART_RX_vect_hld,&wf._n_orig,"ready",&wf._n_fcomp,wf._uartRCVD_tok,&wf._n_tok,&ntestc,&wf._id_conn,&wf._overflowVector,FIND)!=1)
 		  {
 			  	  wf._n_orig=UART_RX_items;
 			  	  if (ESP_ticks>=5000)
@@ -1602,7 +1603,7 @@ uint8_t ESP8266_HW_Init(UART_HandleTypeDef *SerialPort) //Devuelve 1 si reiniciÃ
 		  {
 			  wf._n_fcomp=strlen("ready");
 			  wf._n_orig=UART_RX_items;
-			  while(FT_String_ND(UART_RX_vect_hld,&wf._n_orig,"ready",&wf._n_fcomp,wf._uartRCVD_tok,&wf._n_tok,&ntestc,&wf._id_conn,FIND)!=1)
+			  while(FT_String_ND(UART_RX_vect_hld,&wf._n_orig,"ready",&wf._n_fcomp,wf._uartRCVD_tok,&wf._n_tok,&ntestc,&wf._id_conn,&wf._overflowVector,FIND)!=1)
 			  {
 				  wf._n_orig=UART_RX_items;
 				  if (ESP_ticks>=5000)
