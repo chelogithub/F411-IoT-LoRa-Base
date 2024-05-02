@@ -371,7 +371,6 @@ int main(void)
   ITM0_Write("\r\n INICIO OK\r\n",strlen("\r\n INICIO OK\r\n"));
      ESP8266_HW_Reset();	//WRNNG Hardcoded	  //Reseteo el modulo desde el pin de RESET
      if (wf._DBG_EN) ITM0_Write("\r\n RESET ESP8266 \r\n",strlen("\r\n RESET ESP8266 \r\n"));
-     //HAL_TIM_Base_Start(&htim6); //Timer como base de tiempo
      HAL_UART_Receive_IT(&huart1,(uint8_t *)UART_RX_byte,1);
      HAL_UART_Receive_IT(&huart2,(uint8_t *)UART2_RX_byte,1);
      if (ETH_DBG_EN)ITM0_Write("\r\n SET-UP W5100 \r\n",strlen("\r\n SET-UP W5100 \r\n"));
@@ -380,12 +379,6 @@ int main(void)
    	 ETH.TX[1]= 0;
    	 ETH.TX[2]= 1;
    	 ETH.TX[3]= 192;
-
-   	 //ETH-DISABLE   eth_init(&ETH);
-
-   	 //ETH-DISABLE eth_socket_init(&ETH,0);
-
-   	 //ETH-DISABLE SPI_READ_EN=1;
    ETH.operacion=SPI_READ;
    ETH.TX[1]= 0;
    ETH.TX[2]= 1;
@@ -437,11 +430,6 @@ int main(void)
 	  			{	lr._data_available=0;
 	  				wf_snd_flag_ticks=0;
 	  				WF_SND_FLAG=0;
-	  				/*ModBUS_F03_Request(&mb_wf, 0 , 10);
-	  				ModBUS(&mb_wf);							// Create ModBUS info to be sent
-	  				CopiaVector(wf._data2SND,mb_wf._MBUS_2SND,mb_wf._n_MBUS_2SND,0,'A');
-	  				wf._n_D2SND=mb_wf._n_MBUS_2SND;*/
-
 	  				if( httpPOST(	ENDPOINT, SERVER_IP,PORT,
 	  								ModBUS_F03_Read(&mb_eth,0),
 	  								ModBUS_F03_Read(&mb_eth,1),
@@ -534,17 +522,6 @@ int main(void)
 	  				if(lr._data_available)
 	  				{
 	  					CopiaVector(lr.dataRCV_hld,lr.dataRCV,lr._n_dataRCV,1,"D");
-
-	  					/*int i=0;
-	  					char num[6];
-	  					while(lr.dataRCV_hld[i] != ';')
-	  					{
-	  						num[i]=lr.dataRCV_hld[i];
-	  						i++;
-	  					}
-	  					ModBUS_F03_Assign(&mb_eth,0,atoi(num,10));
-						*/
-
 	  					char num[6];
 	  					int i=0;
 	  					int n=0;
@@ -562,111 +539,8 @@ int main(void)
 								}
 							num[j]='\0';
 							ModBUS_F03_Assign(&mb_eth,n,atoi(num,10));
-							n++;												//Incremento posición  a almacenar
+							n++;//Incremento posición  a almacenar
 	  					}
-
-	  					/*
-	  					i++;
-	  					int j=0;
-	  					while(lr.dataRCV_hld[i] != ';')
-	  					{
-	  						num[j]=lr.dataRCV_hld[i];
-	  						j++;
-	  						i++;
-	  					}
-	  					num[j]='\0';
-	  					ModBUS_F03_Assign(&mb_eth,1,atoi(num,10));
-
-	  					i++;
-	  					j=0;
-	  					while(lr.dataRCV_hld[i] != ';')
-	  					{
-	  						num[j]=lr.dataRCV_hld[i];
-	  						j++;
-	  						i++;
-	  					}
-	  					num[j]='\0';
-	  					ModBUS_F03_Assign(&mb_eth,2,atoi(num,10));
-
-	  					i++;
-	  					j=0;
-	  					while(lr.dataRCV_hld[i] != ';')
-	  					{
-	  						num[j]=lr.dataRCV_hld[i];
-	  						j++;
-	  						i++;
-	  					}
-	  					num[j]='\0';
-	  					ModBUS_F03_Assign(&mb_eth,3,atoi(num,10));
-
-	  					i++;
-	  					j=0;
-	  					while(lr.dataRCV_hld[i] != ';')
-	  					{
-	  						num[j]=lr.dataRCV_hld[i];
-	  						j++;
-	  						i++;
-	  					}
-	  					num[j]='\0';
-	  					ModBUS_F03_Assign(&mb_eth,4,atoi(num,10));
-
-	  					i++;
-	  					j=0;
-	  					while(lr.dataRCV_hld[i] != ';')
-	  					{
-	  						num[j]=lr.dataRCV_hld[i];
-	  						j++;
-	  						i++;
-	  					}
-	  					num[j]='\0';
-	  					ModBUS_F03_Assign(&mb_eth,5,atoi(num,10));
-
-	  					i++;
-	  					j=0;
-	  					while(lr.dataRCV_hld[i] != ';')
-	  					{
-	  						num[j]=lr.dataRCV_hld[i];
-	  						j++;
-	  						i++;
-	  					}
-	  					num[j]='\0';
-	  					ModBUS_F03_Assign(&mb_eth,6,atoi(num,10));
-
-	  					i++;
-	  					j=0;
-	  					while(lr.dataRCV_hld[i] != ';')
-	  					{
-	  						num[j]=lr.dataRCV_hld[i];
-	  						j++;
-	  						i++;
-	  					}
-	  					num[j]='\0';
-	  					ModBUS_F03_Assign(&mb_eth,7,atoi(num,10));
-
-	  					i++;
-	  					j=0;
-	  					while(lr.dataRCV_hld[i] != ';')
-	  					{
-	  						num[j]=lr.dataRCV_hld[i];
-	  						j++;
-	  						i++;
-	  					}
-	  					num[j]='\0';
-	  					ModBUS_F03_Assign(&mb_eth,8,atoi(num,10));
-
-	  					i++;
-	  					j=0;
-	  					while(lr.dataRCV_hld[i] != ';')
-	  					{
-	  						num[j]=lr.dataRCV_hld[i];
-	  						j++;
-	  						i++;
-	  					}
-	  					num[j]='\0';
-	  					ModBUS_F03_Assign(&mb_eth,9,atoi(num,10));
-	  					*/
-
-
 	  				}
 	  				}
 
@@ -688,7 +562,7 @@ int main(void)
 	  			{
 	  				conexion=WiFi_Conn_ND(&wf,&huart1,1);	//Tiene que ir en el main el chequeo es constante
 	  			}
-	  		if (esp_restart==1) //WRNNG Hardcoded RESET WIFI
+	  		/*if (esp_restart==1) //WRNNG Hardcoded RESET WIFI
 	  			{
 	  				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);
 	  				ITM0_Write("\r\n ESP HW Resetting\r\n",strlen("\r\n ESP HW Resetting\r\n"));
@@ -697,6 +571,16 @@ int main(void)
 	  				ITM0_Write("\r\n ESP WAIT 5s AFT RST\r\n",strlen("\r\n ESP WAIT 5s AFT RST\r\n"));
 	  				HAL_Delay(5000);//210419
 	  				esp_restart=0;
+	  			}*/
+	  		if (esp_restart==1) //WRNNG Hardcoded RESET WIFI
+	  			{
+
+	  				HW_RESET(&wf);
+	  				HAL_Delay(5000);//210419
+	  				esp_restart=0;
+	  				wf._estado=0;
+	  				wf._estado_conexion=100;
+	  				ConectarWIFI(&wf);
 	  			}
 
 	    //}//2
@@ -1092,6 +976,19 @@ void SysTick_Handler(void)
 			MB_TOUT_ticks=0;
 		}
 
+	if ((wf._estado == wf._estado_old)&&(lr._data_available)) { wf._wtchdog++;}  //Si hay datos y no hay comm suma
+		else {
+				wf._estado_old = wf._estado;
+				wf._wtchdog=0;
+			 }
+
+	if(wf._wtchdog>=30000)
+	{
+		wf._wtchdog=0;
+		wf._rst_rq=1;
+		esp_restart=1;
+	}
+
 // ENVIO DATOS LoRa ---------------------------------------------------------------//
 
 	if(lr.tmr_dly_en==1)
@@ -1379,8 +1276,6 @@ if (ms_ticks==100)//(ms_ticks==250)//(ms_ticks==50)
 	  }
 	  }else
 	  	  {
-		  //ETH.operacion=SPI_READ;
-		  //ETH.TX[3]=0x00;
 		  SPI_ETH(&ETH);
 	  	  }
 	  if(min_ticks==2)//if(min_ticks==10)
