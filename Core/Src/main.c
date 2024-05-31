@@ -108,7 +108,7 @@ uint16_t 	S0_get_size = 0,
 			get_start_address=0,
 			source_addr=0,
 			send_size=0,
-			datos[]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+			datos[]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 uint8_t decimal[17];
 // ****** End Socket Memory assignment ****** //
 uint8_t spi_Data[64],
