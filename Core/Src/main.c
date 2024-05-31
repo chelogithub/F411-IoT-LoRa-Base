@@ -107,8 +107,9 @@ uint16_t 	S0_get_size = 0,
 			get_free_size=0,
 			get_start_address=0,
 			source_addr=0,
-			send_size=0;
-
+			send_size=0,
+			datos[]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+uint8_t decimal[17];
 // ****** End Socket Memory assignment ****** //
 uint8_t spi_Data[64],
 		spi_no_debug=0;
@@ -330,8 +331,24 @@ int main(void)
 		ETH.SPI= &hspi1;
 
 		// ----------- FIN - Seteo de módulo Ethernet W5100 ----------- //
-
-
+		 //----------------------- WIFI ------------------------//
+			decimal[0]=1;
+			decimal[1]=1;
+			decimal[2]=1;
+			decimal[3]=1;
+			decimal[4]=1;
+			decimal[5]=1;
+			decimal[6]=1;
+			decimal[7]=1;
+			decimal[8]=1;
+			decimal[9]=1;
+			decimal[10]=1;
+			decimal[11]=1;
+			decimal[12]=1;
+			decimal[13]=1;
+			decimal[14]=1;
+			decimal[15]=1;
+			decimal[16]=1;
 	 //----------------------- WIFI ------------------------//
 
 	 //---------------------- ModBUS -----------------------//
@@ -437,7 +454,7 @@ int main(void)
 	  			{	lr._data_available=0;
 	  				wf_snd_flag_ticks=0;
 	  				WF_SND_FLAG=0;
-	  				if( httpPOST(	ENDPOINT, SERVER_IP,PORT,
+	  				/*if( httpPOST(	ENDPOINT, SERVER_IP,PORT,
 	  								ModBUS_F03_Read(&mb_eth,0),
 	  								ModBUS_F03_Read(&mb_eth,1),
 	  								ModBUS_F03_Read(&mb_eth,2),
@@ -454,17 +471,23 @@ int main(void)
 									ModBUS_F03_Read(&mb_eth,13),
 									ModBUS_F03_Read(&mb_eth,14),
 									ModBUS_F03_Read(&mb_eth,15),TEST_1,//ModBUS_F03_Read(&mb_eth,9),TEPELCO,
-	  								post, body, 512))
+	  								post, body, 512))*/
 
-	  				{
-	  							CopiaVector(wf._data2SND,post,strlen(post),0,'A');
-	  							wf._n_D2SND=strlen(post);
-	  							if(wf._automatizacion < WF_SEND)		// Send only with automation sent diasabled
-	  							{
-	  								EnviarDatos(&wf);
-	  								wf._estado_conexion=TCP_SND_EN_CURSO;
-	  							}
-	  				}
+		  				for(uint8_t i=0;i<=16;i++)
+		  				{
+		  					datos[i]=ModBUS_F03_Read(&mb_eth,i);//datos[i]=ModBUS_F03_Read(&mb_eth,i);
+		  				}
+
+		  				if(httpPOST2(ENDPOINT, SERVER_IP,PORT,&datos,&decimal,16,TEST_1,post,body, 512))
+							{
+										CopiaVector(wf._data2SND,post,strlen(post),0,'A');
+										wf._n_D2SND=strlen(post);
+										if(wf._automatizacion < WF_SEND)		// Send only with automation sent diasabled
+										{
+											EnviarDatos(&wf);
+											wf._estado_conexion=TCP_SND_EN_CURSO;
+										}
+							}
 	  			}
 	  	  }
 	  /**************[ FIN PIDO ENVIAR DATOS ]**************/
@@ -538,10 +561,14 @@ int main(void)
 	  					{
 							if( i!=0) i++;
 							int j=0;
+
 								while(lr.dataRCV_hld[i] != ';')
 								{
-									num[j]=lr.dataRCV_hld[i];
-									j++;
+									if(lr.dataRCV_hld[i] != '.')
+									{
+										num[j]=lr.dataRCV_hld[i];
+										j++;
+									}
 									i++;
 								}
 							num[j]='\0';
