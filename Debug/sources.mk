@@ -29,6 +29,5 @@ ESP8266 \
 HTTP \
 LoRa \
 ModBUS \
-STM32_ETH_W5100 \
 STRING \
 

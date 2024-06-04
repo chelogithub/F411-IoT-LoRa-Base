@@ -1,5 +1,5 @@
-ModBUS/ModBUS_Chelo.o: C:/STM32-IDE/STM32-LIBRARY/ModBUS/ModBUS_Chelo.c \
- C:/STM32-IDE/STM32-LIBRARY/ModBUS/ModBUS_Chelo.h ../Core/Inc/main.h \
+ModBUS/ModBUS_Chelo.o: C:/STM32-IDE/STM32-Library/ModBUS/ModBUS_Chelo.c \
+ C:/STM32-IDE/STM32-Library/ModBUS/ModBUS_Chelo.h ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -25,11 +25,10 @@ ModBUS/ModBUS_Chelo.o: C:/STM32-IDE/STM32-LIBRARY/ModBUS/ModBUS_Chelo.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
- ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
-C:/STM32-IDE/STM32-LIBRARY/ModBUS/ModBUS_Chelo.h:
+C:/STM32-IDE/STM32-Library/ModBUS/ModBUS_Chelo.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -56,7 +55,6 @@ C:/STM32-IDE/STM32-LIBRARY/ModBUS/ModBUS_Chelo.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
