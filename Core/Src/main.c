@@ -174,28 +174,11 @@ int main(void)
 		strcpy(wf._TCP_Local_Server_MSK, TCP_SERVER_LOCAL_MSK);
 		strcpy(wf._TCP_Local_Server_Port, TCP_PORT_LOCAL);
 		wf._TCP_Local_Server_EN=0;							//Habilito el Servidor Local
-		wf._data2SND[0]=0x00;//strcpy(wf._data2SND,"01;03;00;00;00;0A;C5;CD");//strcpy(wf._data2SND,"20;352;52#");
-		wf._data2SND[1]=0x00;
-		wf._data2SND[2]=0x00;
-		wf._data2SND[3]=0x00;
-		wf._data2SND[4]=0x00;
-		wf._data2SND[5]=0x06;
-		wf._data2SND[6]=0x01;
-		wf._data2SND[7]=0x03;
-		wf._data2SND[8]=0x00;//strcpy(wf._data2SND,"01;03;00;00;00;0A;C5;CD");//strcpy(wf._data2SND,"20;352;52#");
-		wf._data2SND[9]=0x00;
-		wf._data2SND[10]=0x00;
-		wf._data2SND[11]=0x0A;
-		wf._data2SND[12]=0x00;
-		wf._data2SND[13]=0x33;
-		wf._data2SND[14]=0x34;
-		wf._data2SND[15]=0x35;
-		wf._n_D2SND=12;
 		wf._estado_conexion=100;//Si no se define no arranca	//wf._estado_conexion=1;					//Arranco en WiFi Desconectado
 		wf._automatizacion=WF_CONNECT_TCP;//wf._automatizacion=WF_SEND;
 		wf._NO_IP=1;
 		wf._DBG_EN=1;
-		 //----------------------- WIFI ------------------------//
+     //----------------------- WIFI ------------------------//
 
 		for(uint8_t i=0;i<=16;i++)
 		{
@@ -249,19 +232,19 @@ int main(void)
    	  if (wf._DBG_EN) ITM0_Write("\r\n ESP HW Init OK\r\n",strlen("\r\n ESP HW Init OK\r\n"));
      }
      else
-     {
-	   HW_RESET(&wf);
-   	  if(ESP8266_HW_Init(&huart1)==1)
-   	  {
-   		  ESP_HW_Init=1;
-   		  if (wf._DBG_EN) ITM0_Write("\r\n ESP HW Init OK\r\n",strlen("\r\n ESP HW Init OK\r\n"));
-   	  }
-   	  else
-   	  {
-   		  ESP_HW_Init=0;
-   		  if (wf._DBG_EN)  ITM0_Write("\r\n ESP HW Init Fail\r\n",strlen("\r\n ESP HW Init Fail\r\n"));
-   	  }
-     }
+		 {
+		   HW_RESET(&wf);
+		  if(ESP8266_HW_Init(&huart1)==1)
+			  {
+				  ESP_HW_Init=1;
+				  if (wf._DBG_EN) ITM0_Write("\r\n ESP HW Init OK\r\n",strlen("\r\n ESP HW Init OK\r\n"));
+			  }
+			  else
+				  {
+					  ESP_HW_Init=0;
+					  if (wf._DBG_EN)  ITM0_Write("\r\n ESP HW Init Fail\r\n",strlen("\r\n ESP HW Init Fail\r\n"));
+				  }
+		 }
 
      HAL_Delay(1000);
   /* USER CODE END 2 */
