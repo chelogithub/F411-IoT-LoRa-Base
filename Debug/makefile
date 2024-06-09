@@ -10,7 +10,6 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include STRING/subdir.mk
--include STM32_ETH_W5100/subdir.mk
 -include ModBUS/subdir.mk
 -include LoRa/subdir.mk
 -include HTTP/subdir.mk

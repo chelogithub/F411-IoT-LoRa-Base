@@ -24,14 +24,12 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
- ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  C:/STM32-IDE/STM32-LIBRARY/ESP8266/ESP8266_Chelo.h \
  C:/STM32-IDE/STM32-LIBRARY/ModBUS/ModBUS_Chelo.h \
  C:/STM32-IDE/STM32-LIBRARY/STRING/STR_Chelo.h \
- C:/STM32-IDE/STM32-LIBRARY/STM32_ETH_W5100/ETH_W5100.h \
  C:/STM32-IDE/STM32-LIBRARY/HTTP/http.h \
  C:/STM32-IDE/STM32-LIBRARY/LoRa/RYLR896.h
 ../Core/Inc/main.h:
@@ -60,13 +58,11 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
 C:/STM32-IDE/STM32-LIBRARY/ESP8266/ESP8266_Chelo.h:
 C:/STM32-IDE/STM32-LIBRARY/ModBUS/ModBUS_Chelo.h:
 C:/STM32-IDE/STM32-LIBRARY/STRING/STR_Chelo.h:
-C:/STM32-IDE/STM32-LIBRARY/STM32_ETH_W5100/ETH_W5100.h:
 C:/STM32-IDE/STM32-LIBRARY/HTTP/http.h:
 C:/STM32-IDE/STM32-LIBRARY/LoRa/RYLR896.h:

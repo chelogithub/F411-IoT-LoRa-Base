@@ -65,8 +65,6 @@ void Error_Handler(void);
 #define USART2_TX_LR_GPIO_Port GPIOA
 #define USART2_RX_LR_Pin GPIO_PIN_3
 #define USART2_RX_LR_GPIO_Port GPIOA
-#define SPI1_NSS_Pin GPIO_PIN_4
-#define SPI1_NSS_GPIO_Port GPIOA
 #define WIFI_EN_Pin GPIO_PIN_8
 #define WIFI_EN_GPIO_Port GPIOA
 #define USART1_TX_WF_Pin GPIO_PIN_9
