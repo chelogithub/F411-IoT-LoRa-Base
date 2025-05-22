@@ -791,7 +791,7 @@ if (ms_ticks==100)//(ms_ticks==250)//(ms_ticks==50)
 
     if((wf._estado_conexion==TCP_CONN_EN_CURSO) || (wf._estado_conexion==CONEXION_EN_CURSO)) wf._ticks2++;	//Conteo
 
- 	if((wf._estado_conexion==CONEXION_EN_CURSO) && (wf._ticks2 >10000))
+ 	if((wf._estado_conexion==CONEXION_EN_CURSO) && (wf._ticks2 >10000))	//Si no cambia de esado en 10 segundos lo reinicio
  	{
  		wf._ticks2=0;
  		esp_restart=1;
